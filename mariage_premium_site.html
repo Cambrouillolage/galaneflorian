@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notre Mariage</title>
   <meta name="description" content="Un site de mariage premium, mobile-first, avec liste de mariage et formulaire de participation." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -131,7 +132,7 @@
       width: 38px;
       height: 38px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--yellow), var(--pink));
+      object-fit: contain;
       box-shadow: 0 8px 24px rgba(255, 113, 200, .22);
     }
 
@@ -376,6 +377,10 @@
       text-shadow: none;
     }
 
+    #mot.section {
+      padding-top: 28px;
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -559,8 +564,9 @@
       padding: 18px;
       min-height: 320px;
       display: grid;
+      grid-template-rows: auto 1fr auto;
       gap: 12px;
-      align-content: start;
+      align-content: stretch;
       background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
       border: 1px solid rgba(39,28,35,0.07);
       box-shadow: 0 16px 36px rgba(39,28,35,0.08);
@@ -609,7 +615,13 @@
 
     .gift-meta {
       display: grid;
+      align-content: start;
       gap: 8px;
+    }
+
+    .gift-card > .btn {
+      margin-top: auto;
+      align-self: start;
     }
 
     .gift-card::before {
@@ -745,7 +757,7 @@
 
       .hero-shell {
         padding: 8px 8px 6px;
-        min-height: calc(100svh - var(--nav-h) - 8px);
+        min-height: 68svh;
       }
 
       .hero-art {
@@ -754,8 +766,8 @@
 
       .mariage-stack {
         height: 100%;
-        align-content: space-between;
-        gap: 4px;
+        align-content: center;
+        gap: 1px;
         padding: 0;
       }
     }
@@ -763,6 +775,7 @@
     @media (min-width: 700px) {
       .hero-shell { padding: 34px 30px 28px; }
       .section { padding: 92px 0; }
+      #mot.section { padding-top: 40px; }
       .section-grid.two { grid-template-columns: 1.15fr .85fr; align-items: center; }
       .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .photos .photo-card { min-height: 340px; }
@@ -784,7 +797,7 @@
   <div class="nav-wrap" id="top">
     <div class="container nav">
       <a href="#accueil" class="brand" aria-label="Retour à l'accueil">
-        <span class="brand-badge"></span>
+        <img class="brand-badge" src="assets/favicon.png" alt="" aria-hidden="true" />
         <span>Florian &amp; Galane</span>
       </a>
       <div class="nav-links">
@@ -824,10 +837,11 @@
     <section class="section" id="mot">
       <div class="container message-single">
         <div class="glass-card message-card fade-up">
-          <div class="eyebrow">Un mot pour vous</div>
+          
           <p class="message-text">
-            Après des années d’amour, d’aventures et de fous rires, nous sommes heureux de vous inviter à partager avec nous ce moment unique.
-            Votre présence sera déjà un immense cadeau, et pour celles et ceux qui souhaitent participer à notre liste, nous avons préparé un petit espace rien qu’ici.
+            Après plusieurs années à partager notre vie, nos aventures et pas mal de fous rires, on est très heureux de pouvoir célébrer ce moment avec vous.
+Votre présence à nos côtés pour cette journée compte énormément pour nous. On a hâte de passer ce moment entourés des gens qu’on aime, de profiter, rire, manger, danser… et créer plein de beaux souvenirs ensemble.
+Merci d’être là ❤️
           </p>
         </div>
       </div>
@@ -835,9 +849,7 @@
 
     <section class="section" id="journee">
       <div class="container">
-        <div class="eyebrow fade-up">Le programme</div>
-        <h2 class="title fade-up">La journée</h2>
-        <p class="lead fade-up">Voici le fil de cette belle journée. Tu peux bien sûr ajuster les horaires et les détails plus tard.</p>
+        <div class="eyebrow fade-up">Notre journée</div>
         <div class="timeline" style="margin-top:24px;">
           <article class="timeline-item">
             <div class="timeline-icon">💍</div>
@@ -856,7 +868,7 @@
           <article class="timeline-item">
             <div class="timeline-icon">🍽️</div>
             <div>
-              <h3>La Croisièrre</h3>
+              <h3>La Croisière</h3>
               <p>RDV à 18h30 au port de Grenelle à Paris 15eme, pour le Diner des cocktails et pleins de surprises. Retour à quai à 23h00 </p>
             </div>
           </article>
@@ -873,9 +885,9 @@
 
     <section class="section" id="photos">
       <div class="container">
-        <div class="eyebrow fade-up">Quelques images</div>
-        <h2 class="title fade-up">Nous deux</h2>
-        <p class="lead fade-up">Des images douces et lumineuses pour raconter un peu de nous avant le grand jour.</p>
+        
+        <h2 class="title fade-up">Notre vie en photos</h2>
+       
 
         <div class="photos" style="margin-top:26px;">
           <article class="photo-card">
@@ -948,9 +960,9 @@
     <section class="section" id="participer">
       <div class="container">
         <div class="glass-card cta-box fade-up">
-          <div class="eyebrow">Merci pour votre douceur</div>
+          
           <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Envie de participer&nbsp;?</h2>
-          <p class="lead" style="margin-inline:auto;">Tu peux nous laisser ton prénom, un petit mot, et nous dire ce que tu aimerais nous aider à prendre en premier.</p>
+          <p class="lead" style="margin-inline:auto;">Tu peux nous laisser ton prénom et un petit mot.</p>
           <div style="margin-top:20px;">
             <button class="btn btn-primary" id="openFormBtn" type="button">Je participe</button>
           </div>
@@ -968,22 +980,22 @@
             <div class="form-grid two">
               <div class="field">
                 <label for="nom">Nom</label>
-                <input id="nom" name="nom" type="text" placeholder="Votre nom" required />
+                <input id="nom" name="nom" type="text" placeholder="Votre nom" />
               </div>
               <div class="field">
                 <label for="prenom">Prénom</label>
-                <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" required />
+                <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" />
               </div>
             </div>
 
             <div class="field">
               <label for="mot">Petit mot pour les mariés</label>
-              <textarea id="motInvite" name="mot" placeholder="Écrivez un petit mot..." required></textarea>
+              <textarea id="motInvite" name="mot" placeholder="Écrivez un petit mot..."></textarea>
             </div>
 
             <div class="field">
-              <label for="priorite">Que voulez-vous que l’on prenne en premier avec votre super don ?</label>
-              <textarea id="priorite" name="priorite" placeholder="Exemple : la bibliothèque, l’hôtel Loire, la déco du salon..." required></textarea>
+              <label for="priorite">Cadeau</label>
+              <input id="priorite" name="priorite" type="text" placeholder="Exemple : Voyage de Noce" />
             </div>
 
             <div class="pay-box">
@@ -1068,7 +1080,6 @@
       { category: 'Maison', title: 'Posters', text: 'Une note déco qui donnera du caractère à notre intérieur.', icon: 'poster' },
       { category: 'Maison', title: 'Chaises pour notre barre', text: 'Pour finaliser un coin convivial à la maison.', icon: 'chair' },
       { category: 'Maison', title: 'Étagères', text: 'Une pièce pratique et jolie pour mieux organiser notre intérieur.', icon: 'shelf' },
-      { category: 'Maison', title: 'Placard chambre Florian Galane', text: 'Pour aménager notre espace de façon plus belle et plus pratique.', icon: 'closet' },
       { category: 'Maison', title: 'Déco pour le salon', text: 'Les petits détails qui rendent un lieu vraiment chaleureux.', icon: 'sofa' }
     ];
 
@@ -1145,22 +1156,37 @@
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
+    let hasMoved = false;
+    const DRAG_THRESHOLD = 8;
 
     carousel.addEventListener('pointerdown', (e) => {
+      if (!e.isPrimary) return;
+      if (e.button !== 0) return;
+      if (e.target.closest('a, button, input, textarea, select, [role="button"]')) return;
+
       isDown = true;
+      hasMoved = false;
       carousel.setPointerCapture(e.pointerId);
-      startX = e.pageX - carousel.offsetLeft;
+      startX = e.clientX - carousel.offsetLeft;
       scrollLeft = carousel.scrollLeft;
     });
 
     carousel.addEventListener('pointermove', (e) => {
       if (!isDown) return;
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 1.15;
+      const x = e.clientX - carousel.offsetLeft;
+      const rawWalk = x - startX;
+      if (!hasMoved && Math.abs(rawWalk) < DRAG_THRESHOLD) return;
+
+      hasMoved = true;
+      const walk = rawWalk * 1.15;
       carousel.scrollLeft = scrollLeft - walk;
+      e.preventDefault();
     });
 
-    const stopDrag = () => { isDown = false; };
+    const stopDrag = () => {
+      isDown = false;
+      hasMoved = false;
+    };
     carousel.addEventListener('pointerup', stopDrag);
     carousel.addEventListener('pointerleave', stopDrag);
     carousel.addEventListener('pointercancel', stopDrag);
@@ -1182,6 +1208,8 @@
     const returnHomeBtn = document.getElementById('returnHomeBtn');
     const form = document.getElementById('participationForm');
     const prioriteInput = document.getElementById('priorite');
+    const webhookUrl = 'https://n8n.dealt.tech/webhook-test/fg11042026';
+    let selectedGift = '';
 
     function showHome() {
       mainSections.forEach(id => document.getElementById(id)?.classList.remove('hidden'));
@@ -1195,6 +1223,7 @@
       thanksPage.classList.add('hidden');
       formPage.classList.remove('hidden');
 
+      selectedGift = selectedGiftTitle || selectedGift;
       if (selectedGiftTitle && prioriteInput) {
         prioriteInput.value = selectedGiftTitle;
       }
@@ -1247,9 +1276,43 @@
       });
     });
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      showThanks();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const payload = {
+        nom: document.getElementById('nom')?.value?.trim() || '',
+        prenom: document.getElementById('prenom')?.value?.trim() || '',
+        petitMot: document.getElementById('motInvite')?.value?.trim() || '',
+        cadeau: prioriteInput?.value?.trim() || selectedGift,
+        source: 'site-mariage',
+        sentAt: new Date().toISOString()
+      };
+
+      try {
+        if (submitBtn) submitBtn.disabled = true;
+
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Webhook HTTP ${response.status}`);
+        }
+
+        form.reset();
+    selectedGift = '';
+        showThanks();
+      } catch (error) {
+        alert('Impossible d\'envoyer la participation pour le moment. Merci de reessayer dans quelques instants.');
+        console.error('Erreur envoi webhook n8n:', error);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   </script>
 </body>
