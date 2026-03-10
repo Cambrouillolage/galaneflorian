@@ -362,6 +362,20 @@
       text-shadow: 0 8px 24px rgba(203, 63, 146, 0.18);
     }
 
+    .date-below-hero {
+      padding: 14px 0 8px;
+      text-align: center;
+    }
+
+    .date-below-hero p {
+      margin: 0;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.2rem, 8vw, 4.2rem);
+      line-height: 1;
+      color: #111111;
+      text-shadow: none;
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -724,6 +738,28 @@
       50% { transform: translate3d(0, -14px, 0); }
     }
 
+    @media (max-width: 699px) {
+      .hero {
+        padding: 10px 0 8px;
+      }
+
+      .hero-shell {
+        padding: 8px 8px 6px;
+        min-height: calc(100svh - var(--nav-h) - 8px);
+      }
+
+      .hero-art {
+        padding: 4px;
+      }
+
+      .mariage-stack {
+        height: 100%;
+        align-content: space-between;
+        gap: 4px;
+        padding: 0;
+      }
+    }
+
     @media (min-width: 700px) {
       .hero-shell { padding: 34px 30px 28px; }
       .section { padding: 92px 0; }
@@ -775,13 +811,13 @@
           </div>
         </div>
 
-        <div class="hero-content">
-          <h1 class="hero-title reveal-lines">
-            <span>Notre</span>
-            <span class="script">mariage</span>
-          </h1>
-          <p class="hero-date-script">11/04/2026</p>
-        </div>
+        <div class="hero-content"></div>
+      </div>
+    </section>
+
+    <section class="date-below-hero" aria-label="Date du mariage">
+      <div class="container">
+        <p>11/04/2026</p>
       </div>
     </section>
 
@@ -821,7 +857,7 @@
             <div class="timeline-icon">🍽️</div>
             <div>
               <h3>La Croisièrre</h3>
-              <p>RDV à 18h30 au port de Grenelle à Paris 15eme. Pour une croisère sur la seine devant les plus beau moment de Paris. Discours, diner et Cocktails jusqu'au retours au quai prévu à 23h00 </p>
+              <p>RDV à 18h30 au port de Grenelle à Paris 15eme, pour le Diner des cocktails et pleins de surprises. Retour à quai à 23h00 </p>
             </div>
           </article>
           <article class="timeline-item">
@@ -845,43 +881,43 @@
           <article class="photo-card">
             <img src="assets/photos/1photo.jpeg" alt="Photo 1" />
             <div class="photo-overlay">
-              <h3>Photo 1</h3>
-              <p>Souvenir de notre histoire.</p>
+              <h3>Avant la coloc</h3>
+              
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/2photo.jpeg" alt="Photo 2" />
             <div class="photo-overlay">
-              <h3>Photo 2</h3>
-              <p>Un instant complice.</p>
+              <h3>1er Jour de la coloc</h3>
+             
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/3photo.jpeg" alt="Photo 3" />
             <div class="photo-overlay">
-              <h3>Photo 3</h3>
-              <p>Des moments qui comptent.</p>
+              <h3>Pendant la coloc</h3>
+              
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/4photo.jpeg" alt="Photo 4" />
             <div class="photo-overlay">
-              <h3>Photo 4</h3>
-              <p>Une jolie parenthèse.</p>
+              <h3>Dernier jour de la coloc</h3>
+             
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/5photo.jpeg" alt="Photo 5" />
             <div class="photo-overlay">
-              <h3>Photo 5</h3>
-              <p>Notre bonheur en images.</p>
+              <h3>Le début de notre belle histoire</h3>
+             
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/6photo.jpeg" alt="Photo 6" />
             <div class="photo-overlay">
-              <h3>Photo 6</h3>
-              <p>Encore un beau souvenir.</p>
+              <h3>et le début de notre nouvelle aventure</h3>
+              
             </div>
           </article>
         </div>
@@ -893,8 +929,8 @@
         <div class="gift-head">
           <div>
             <div class="eyebrow">Liste de mariage</div>
-            <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Des envies rangées par univers</h2>
-            <p class="lead">Fais glisser le carrousel. Chaque carte correspond à une idée cadeau ou à un projet qui nous fera plaisir.</p>
+            <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;"></h2>
+            <p class="lead">Découvre nos envies qu'on aimerait et qui pourrait se réaliser avec vos participations. Une urne sera disponible jour J</p>
           </div>
           <div class="carousel-nav">
             <button class="icon-btn" type="button" id="prevBtn" aria-label="Voir les cadeaux précédents">←</button>
@@ -953,13 +989,13 @@
             <div class="pay-box">
               <div>
                 <strong>IBAN</strong>
-                <p class="iban">FR76 0000 0000 0000 0000 0000 000</p>
-                <p class="small">Tu pourras remplacer cet IBAN par le vrai en une seconde.</p>
+                <p class="iban">FR76 3000 3027 8400 1100 6810 477</p>
+                
               </div>
               <div>
                 <strong>WERO</strong>
-                <p class="small">Le bouton ci-dessous peut pointer vers ton vrai lien WERO.</p>
-                <a class="btn btn-primary" id="weroButton" href="#" aria-label="Lien WERO">Payer avec WERO</a>
+                <p class="small">Sur votre banque au 06 99 21 23 65</p>
+                
               </div>
             </div>
 
@@ -1021,22 +1057,17 @@
     });
 
     const gifts = [
-      { category: 'Maison', title: 'Casserole inox', text: 'Un essentiel pour notre cuisine et nos futurs repas à la maison.', icon: 'pan' },
-      { category: 'Maison', title: 'Oreiller', text: 'Pour des nuits encore plus douces dans notre nouveau cocon.', icon: 'pillow' },
-      { category: 'Maison', title: 'Assiette soupe bistrot', text: 'Une touche chaleureuse pour les repas qui réconfortent.', icon: 'plate' },
+      { category: 'Projet', title: 'Voyage de Noce', text: 'Un voyage en amoureux', icon: 'spark' },
+      { category: 'Maison', title: 'Casseroles inox', text: 'Un essentiel pour notre cuisine et nos futurs repas à la maison.', icon: 'pan' },
+      { category: 'Maison', title: 'Oreillers', text: 'Pour des nuits encore plus douces dans notre nouveau cocon.', icon: 'pillow' },
+      { category: 'Maison', title: 'Assiettes à soupe bistrot', text: 'Une touche chaleureuse pour les repas qui réconfortent.', icon: 'plate' },
       { category: 'Cleon', title: 'Siège auto Cleon', text: 'Un indispensable pour accompagner ses premières aventures.', icon: 'carseat' },
       { category: 'Cleon', title: 'Matelas lit Cleon', text: 'Pour de belles nuits et de grands rêves.', icon: 'bed' },
       { category: 'Cleon', title: 'Bureau Cleon', text: 'Un joli coin pour grandir, dessiner, lire et créer.', icon: 'desk' },
-      { category: 'Cleon', title: 'Chaise Cleon', text: 'Une assise pensée pour ses futurs moments créatifs.', icon: 'chair' },
-      { category: 'Cleon', title: 'Vêtement été Cleon', text: 'De quoi l’habiller pour les beaux jours et les grandes découvertes.', icon: 'shirt' },
       { category: 'Maison', title: 'Bibliothèque', text: 'Pour accueillir nos livres, nos jeux et nos petits trésors.', icon: 'bookshelf' },
-      { category: 'Maison', title: 'Postère', text: 'Une note déco qui donnera du caractère à notre intérieur.', icon: 'poster' },
-      { category: 'Maison', title: 'Aliment résine', text: 'Un élément décoratif original pour personnaliser notre univers.', icon: 'decor' },
-      { category: 'Maison', title: 'Chaise pour notre barre', text: 'Pour finaliser un coin convivial à la maison.', icon: 'chair' },
-      { category: 'Maison', title: 'Étagère', text: 'Une pièce pratique et jolie pour mieux organiser notre intérieur.', icon: 'shelf' },
-      { category: 'Voyage Loire', title: 'Billet de train Loire', text: 'Une part de notre escapade à deux, pleine de douceur.', icon: 'train' },
-      { category: 'Voyage Loire', title: 'Hôtel Loire', text: 'Un moment suspendu dans un joli lieu pour prolonger la fête.', icon: 'hotel' },
-      { category: 'Projet', title: 'Commande en avant-première de GAV', text: 'Un projet qui nous tient à cœur et qu’on serait ravis de lancer avec vous.', icon: 'spark' },
+      { category: 'Maison', title: 'Posters', text: 'Une note déco qui donnera du caractère à notre intérieur.', icon: 'poster' },
+      { category: 'Maison', title: 'Chaises pour notre barre', text: 'Pour finaliser un coin convivial à la maison.', icon: 'chair' },
+      { category: 'Maison', title: 'Étagères', text: 'Une pièce pratique et jolie pour mieux organiser notre intérieur.', icon: 'shelf' },
       { category: 'Maison', title: 'Placard chambre Florian Galane', text: 'Pour aménager notre espace de façon plus belle et plus pratique.', icon: 'closet' },
       { category: 'Maison', title: 'Déco pour le salon', text: 'Les petits détails qui rendent un lieu vraiment chaleureux.', icon: 'sofa' }
     ];
@@ -1065,7 +1096,13 @@
     }
 
     function giftImagePath(title) {
-      return `assets/liste-mariage/${encodeURIComponent(title)}.jpeg`;
+      const fileName = `${title
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')}.jpg`;
+      return `assets/liste-mariage/${encodeURIComponent(fileName)}`;
     }
 
     function renderGiftVisual(gift) {
@@ -1127,6 +1164,15 @@
     carousel.addEventListener('pointerup', stopDrag);
     carousel.addEventListener('pointerleave', stopDrag);
     carousel.addEventListener('pointercancel', stopDrag);
+
+    // Garantit le clic sur "Je participe" depuis une card, même pendant l'usage du drag.
+    carousel.addEventListener('click', (e) => {
+      const participateBtn = e.target.closest('a[href="#participer"]');
+      if (!participateBtn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      showForm(participateBtn.dataset.giftTitle || '');
+    });
 
     const mainSections = ['accueil','mot','journee','photos','liste','urne','participer'];
     const formPage = document.getElementById('formPage');
