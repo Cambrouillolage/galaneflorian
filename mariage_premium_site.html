@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notre Mariage</title>
+  <meta name="description" content="Un site de mariage premium, mobile-first, avec liste de mariage et formulaire de participation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --bg-soft: #fff4ef;
+      --surface: rgba(255,255,255,0.7);
+      --surface-strong: rgba(255,255,255,0.92);
+      --text: #271c23;
+      --muted: #735d69;
+      --line: rgba(39, 28, 35, 0.08);
+      --pink: #ff71c8;
+      --pink-soft: #ffd5ef;
+      --yellow: #ffd95a;
+      --yellow-soft: #fff1b0;
+      --peach: #ffb89a;
+      --lavender: #d09bff;
+      --blue: #8cb9ff;
+      --green: #96f0a5;
+      --shadow: 0 10px 30px rgba(255, 126, 172, 0.10), 0 20px 60px rgba(255, 217, 90, 0.10);
+      --radius: 24px;
+      --radius-lg: 32px;
+      --max: 1180px;
+      --nav-h: 74px;
+      --transition: 260ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,217,90,.22), transparent 32%),
+        radial-gradient(circle at top right, rgba(255,113,200,.17), transparent 28%),
+        linear-gradient(180deg, #fffdfb 0%, #fff8f5 52%, #fffaf7 100%);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 28px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 72px 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #7d536e;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+    }
+
+    .title {
+      margin: 16px 0 12px;
+      font-size: clamp(2rem, 8vw, 4.7rem);
+      line-height: .95;
+      letter-spacing: -0.05em;
+    }
+
+    .lead {
+      margin: 0;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .script {
+      font-family: Sora, Inter, system-ui, sans-serif;
+      font-weight: 800;
+      color: #d94fa6;
+      letter-spacing: -0.05em;
+      text-transform: lowercase;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 250, 247, 0.65);
+      border-bottom: 1px solid rgba(39,28,35,0.05);
+    }
+
+    .nav {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--yellow), var(--pink));
+      box-shadow: 0 8px 24px rgba(255, 113, 200, .22);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      color: #221319;
+      background: linear-gradient(135deg, var(--yellow) 0%, #ffe78f 35%, #ff96d7 100%);
+      box-shadow: 0 14px 30px rgba(255, 187, 67, 0.22), 0 10px 24px rgba(255, 113, 200, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.72);
+      border-color: rgba(39,28,35,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 34px 0 28px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      padding: 28px 18px 22px;
+      min-height: calc(100svh - var(--nav-h) - 22px);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,217,90,.23), transparent 22%),
+        radial-gradient(circle at 82% 22%, rgba(255,113,200,.18), transparent 24%),
+        linear-gradient(180deg, #fffdf9, #fff8f5 58%, #fff7f4 100%);
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-glow,
+    .hero-glow::before,
+    .hero-glow::after {
+      position: absolute;
+      inset: auto;
+      content: "";
+      border-radius: 999px;
+      opacity: .45;
+      z-index: -1;
+    }
+
+    .hero-glow {
+      width: 220px;
+      height: 220px;
+      left: -40px;
+      top: 40px;
+      background: rgba(255, 217, 90, .25);
+      animation: floaty 8s ease-in-out infinite;
+    }
+
+    .hero-glow::before {
+      width: 220px;
+      height: 220px;
+      right: -80vw;
+      top: 16vh;
+      background: rgba(255, 113, 200, .18);
+      animation: floaty 10s ease-in-out infinite reverse;
+    }
+
+    .hero-glow::after {
+      width: 190px;
+      height: 190px;
+      left: 26vw;
+      bottom: -12vh;
+      background: rgba(255, 184, 154, .18);
+      animation: floaty 9s ease-in-out infinite;
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: .96;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .mariage-stack {
+      position: relative;
+      width: min(100%, 1120px);
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: clamp(10px, 1.6vw, 20px);
+      padding: 8px 0;
+      transform: scale(1);
+    }
+
+    .mariage-line {
+      width: fit-content;
+      max-width: 100%;
+      text-align: center;
+      font-size: clamp(2.7rem, 10.8vw, 8rem);
+      font-weight: 800;
+      line-height: .82;
+      letter-spacing: clamp(.14em, 1.8vw, .24em);
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: .74;
+      user-select: none;
+      text-shadow: 0 10px 30px rgba(255,255,255,.35);
+    }
+
+    .line-1 { color: #f3da72; }
+    .line-2 { color: #f7a78f; }
+    .line-3 { color: #ef85d8; }
+    .line-4 { color: #cf8ff7; }
+    .line-5 { color: #88b4fb; }
+    .line-6 { color: #87ee99; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 18px;
+      align-self: center;
+      justify-self: center;
+      max-width: 760px;
+      padding: 10px 12px;
+      text-align: center;
+      background: transparent;
+      border: 0;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 10vw, 7rem);
+      line-height: .9;
+      letter-spacing: -0.08em;
+      max-width: 12ch;
+      margin-inline: auto;
+    }
+
+    .hero-title span { display: block; }
+
+    .reveal-lines span,
+    .reveal-word,
+    .hero-copy,
+    .hero-actions,
+    .glass-card,
+    .photo-card,
+    .timeline-item,
+    .gift-card,
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .hero-copy {
+      max-width: 56ch;
+      font-size: clamp(1rem, 2.3vw, 1.15rem);
+      line-height: 1.7;
+      color: rgba(39,28,35,.82);
+      width: fit-content;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .hero-date {
+      display: inline-flex;
+      justify-self: center;
+      align-items: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(39,28,35,.08);
+      background: rgba(255,255,255,.72);
+      color: #2d2028;
+      font-weight: 800;
+      letter-spacing: .08em;
+      box-shadow: 0 12px 26px rgba(39,28,35,.08);
+    }
+
+    .hero-date-script {
+      margin: 0;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.8rem, 11vw, 6.4rem);
+      line-height: 1;
+      color: #cb3f92;
+      text-shadow: 0 8px 24px rgba(203, 63, 146, 0.18);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .message-single {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .glass-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.72));
+      border: 1px solid rgba(255,255,255,.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .message-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -50px;
+      bottom: -80px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,113,200,.28), transparent 70%);
+    }
+
+    .message-text {
+      margin: 14px 0 0;
+      font-size: clamp(1.1rem, 3vw, 1.45rem);
+      line-height: 1.8;
+      letter-spacing: -0.03em;
+      max-width: 34ch;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(39,28,35,0.06);
+      box-shadow: 0 12px 24px rgba(39,28,35,0.05);
+    }
+
+    .timeline-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: linear-gradient(135deg, rgba(255,217,90,.45), rgba(255,113,200,.22));
+    }
+
+    .timeline-item h3,
+    .gift-card h3,
+    .photo-overlay h3,
+    .form-card h2,
+    .thanks-card h2 {
+      margin: 0 0 6px;
+      letter-spacing: -0.04em;
+    }
+
+    .timeline-item p,
+    .gift-card p,
+    .form-card p,
+    .thanks-card p,
+    .small {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .photo-card {
+      position: relative;
+      min-height: 280px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .photo-card:hover img { transform: scale(1.05); }
+
+    .photo-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 18px;
+      color: white;
+      background: linear-gradient(180deg, transparent, rgba(24, 15, 20, .72));
+    }
+
+    .gift-head {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .carousel-shell {
+      position: relative;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(39,28,35,0.08);
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(39,28,35,0.08);
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .icon-btn:hover { transform: translateY(-2px); background: white; }
+
+    .carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(82%, 1fr);
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel:active { cursor: grabbing; }
+    .carousel::-webkit-scrollbar { display: none; }
+
+    .gift-card {
+      scroll-snap-align: start;
+      border-radius: 28px;
+      padding: 18px;
+      min-height: 320px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
+      border: 1px solid rgba(39,28,35,0.07);
+      box-shadow: 0 16px 36px rgba(39,28,35,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-visual {
+      position: relative;
+      min-height: 150px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,217,90,.36), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,113,200,.24), transparent 34%),
+        linear-gradient(180deg, #fffaf2, #fff);
+      border: 1px solid rgba(39,28,35,0.06);
+    }
+
+    .gift-visual svg {
+      width: 88px;
+      height: 88px;
+      stroke: #3d2432;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 12px 20px rgba(255,113,200,.12));
+    }
+
+    .gift-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gift-icon-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+    }
+
+    .gift-meta {
+      display: grid;
+      gap: 8px;
+    }
+
+    .gift-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20px -60px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,217,90,.26), transparent 70%);
+    }
+
+    .gift-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 22px 46px rgba(39,28,35,0.10);
+    }
+
+    .tag {
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #7f4b67;
+      background: linear-gradient(135deg, rgba(255,217,90,.4), rgba(255,113,200,.18));
+      border: 1px solid rgba(255,255,255,.75);
+    }
+
+    .urne-box,
+    .cta-box,
+    .form-card,
+    .thanks-card {
+      text-align: center;
+    }
+
+    .cta-box {
+      padding: 28px;
+    }
+
+    .form-wrap,
+    .thanks-wrap {
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      align-items: center;
+      padding: 18px 0 52px;
+    }
+
+    .form-card,
+    .thanks-card {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 26px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(39,28,35,0.1);
+      border-radius: 18px;
+      padding: 15px 16px;
+      background: rgba(255,255,255,0.85);
+      min-height: 54px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(228, 87, 175, 0.35);
+      box-shadow: 0 0 0 6px rgba(255, 113, 200, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .pay-box {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,245,235,.9), rgba(255,255,255,.86));
+      border: 1px solid rgba(39,28,35,0.06);
+      text-align: left;
+    }
+
+    .iban {
+      font-weight: 800;
+      letter-spacing: .02em;
+      word-break: break-word;
+    }
+
+    .hidden { display: none !important; }
+
+    .footer {
+      padding: 18px 0 34px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -14px, 0); }
+    }
+
+    @media (min-width: 700px) {
+      .hero-shell { padding: 34px 30px 28px; }
+      .section { padding: 92px 0; }
+      .section-grid.two { grid-template-columns: 1.15fr .85fr; align-items: center; }
+      .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .photos .photo-card { min-height: 340px; }
+      .carousel { grid-auto-columns: minmax(340px, 38%); gap: 18px; }
+      .form-grid.two { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 980px) {
+      .nav-links { display: flex; }
+      .hero-shell { min-height: 92svh; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .timeline-item:nth-child(odd) { transform: translateY(12px); }
+      .gift-head { grid-template-columns: 1fr auto; align-items: end; }
+      .photos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap" id="top">
+    <div class="container nav">
+      <a href="#accueil" class="brand" aria-label="Retour à l'accueil">
+        <span class="brand-badge"></span>
+        <span>Florian &amp; Galane</span>
+      </a>
+      <div class="nav-links">
+        <a href="#journee">Journée</a>
+        <a href="#photos">Photos</a>
+        <a href="#liste">Liste</a>
+        <a href="#participer" class="btn btn-secondary">Je participe</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="app">
+    <section class="hero container" id="accueil">
+      <div class="hero-shell">
+        <div class="hero-glow"></div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="mariage-stack">
+            <div class="mariage-line line-1">MARIAGE</div>
+            <div class="mariage-line line-2">MARIAGE</div>
+            <div class="mariage-line line-3">MARIAGE</div>
+            <div class="mariage-line line-4">MARIAGE</div>
+            <div class="mariage-line line-5">MARIAGE</div>
+            <div class="mariage-line line-6">MARIAGE</div>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-title reveal-lines">
+            <span>Notre</span>
+            <span class="script">mariage</span>
+          </h1>
+          <p class="hero-date-script">11/04/2026</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mot">
+      <div class="container message-single">
+        <div class="glass-card message-card fade-up">
+          <div class="eyebrow">Un mot pour vous</div>
+          <p class="message-text">
+            Après des années d’amour, d’aventures et de fous rires, nous sommes heureux de vous inviter à partager avec nous ce moment unique.
+            Votre présence sera déjà un immense cadeau, et pour celles et ceux qui souhaitent participer à notre liste, nous avons préparé un petit espace rien qu’ici.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journee">
+      <div class="container">
+        <div class="eyebrow fade-up">Le programme</div>
+        <h2 class="title fade-up">La journée</h2>
+        <p class="lead fade-up">Voici le fil de cette belle journée. Tu peux bien sûr ajuster les horaires et les détails plus tard.</p>
+        <div class="timeline" style="margin-top:24px;">
+          <article class="timeline-item">
+            <div class="timeline-icon">💍</div>
+            <div>
+              <h3>Cérémonie</h3>
+              <p>RDV à 13h30 devant le parvis de la Mairie dans vos plus belles tenues. La cérémonie se tiendra dans la salle des mariages</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-icon">🥂</div>
+            <div>
+              <h3>Entre-deux</h3>
+              <p>Un temps pour trinquer jusqu'à 16h30, dans le bar en face de la mairie le temps de faire les photos.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-icon">🍽️</div>
+            <div>
+              <h3>La Croisièrre</h3>
+              <p>RDV à 18h30 au port de Grenelle à Paris 15eme. Pour une croisère sur la seine devant les plus beau moment de Paris. Discours, diner et Cocktails jusqu'au retours au quai prévu à 23h00 </p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-icon">✨</div>
+            <div>
+              <h3>Soirée</h3>
+              <p>Ouverture de la piste de danse de 23h30 à 2h00.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="photos">
+      <div class="container">
+        <div class="eyebrow fade-up">Quelques images</div>
+        <h2 class="title fade-up">Nous deux</h2>
+        <p class="lead fade-up">Des images douces et lumineuses pour raconter un peu de nous avant le grand jour.</p>
+
+        <div class="photos" style="margin-top:26px;">
+          <article class="photo-card">
+            <img src="assets/photos/1photo.jpeg" alt="Photo 1" />
+            <div class="photo-overlay">
+              <h3>Photo 1</h3>
+              <p>Souvenir de notre histoire.</p>
+            </div>
+          </article>
+          <article class="photo-card">
+            <img src="assets/photos/2photo.jpeg" alt="Photo 2" />
+            <div class="photo-overlay">
+              <h3>Photo 2</h3>
+              <p>Un instant complice.</p>
+            </div>
+          </article>
+          <article class="photo-card">
+            <img src="assets/photos/3photo.jpeg" alt="Photo 3" />
+            <div class="photo-overlay">
+              <h3>Photo 3</h3>
+              <p>Des moments qui comptent.</p>
+            </div>
+          </article>
+          <article class="photo-card">
+            <img src="assets/photos/4photo.jpeg" alt="Photo 4" />
+            <div class="photo-overlay">
+              <h3>Photo 4</h3>
+              <p>Une jolie parenthèse.</p>
+            </div>
+          </article>
+          <article class="photo-card">
+            <img src="assets/photos/5photo.jpeg" alt="Photo 5" />
+            <div class="photo-overlay">
+              <h3>Photo 5</h3>
+              <p>Notre bonheur en images.</p>
+            </div>
+          </article>
+          <article class="photo-card">
+            <img src="assets/photos/6photo.jpeg" alt="Photo 6" />
+            <div class="photo-overlay">
+              <h3>Photo 6</h3>
+              <p>Encore un beau souvenir.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="liste">
+      <div class="container glass-card fade-up">
+        <div class="gift-head">
+          <div>
+            <div class="eyebrow">Liste de mariage</div>
+            <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Des envies rangées par univers</h2>
+            <p class="lead">Fais glisser le carrousel. Chaque carte correspond à une idée cadeau ou à un projet qui nous fera plaisir.</p>
+          </div>
+          <div class="carousel-nav">
+            <button class="icon-btn" type="button" id="prevBtn" aria-label="Voir les cadeaux précédents">←</button>
+            <button class="icon-btn" type="button" id="nextBtn" aria-label="Voir les cadeaux suivants">→</button>
+          </div>
+        </div>
+
+        <div class="carousel-shell">
+          <div class="carousel" id="giftCarousel"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="participer">
+      <div class="container">
+        <div class="glass-card cta-box fade-up">
+          <div class="eyebrow">Merci pour votre douceur</div>
+          <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Envie de participer&nbsp;?</h2>
+          <p class="lead" style="margin-inline:auto;">Tu peux nous laisser ton prénom, un petit mot, et nous dire ce que tu aimerais nous aider à prendre en premier.</p>
+          <div style="margin-top:20px;">
+            <button class="btn btn-primary" id="openFormBtn" type="button">Je participe</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden" id="formPage">
+      <div class="container form-wrap">
+        <div class="glass-card form-card">
+          <div class="eyebrow">Participation</div>
+          <h2 class="title" style="font-size:clamp(2rem,7vw,4.3rem);margin-bottom:12px;">Un immense merci ❤️</h2>
+          
+          <form id="participationForm" class="form-grid">
+            <div class="form-grid two">
+              <div class="field">
+                <label for="nom">Nom</label>
+                <input id="nom" name="nom" type="text" placeholder="Votre nom" required />
+              </div>
+              <div class="field">
+                <label for="prenom">Prénom</label>
+                <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="mot">Petit mot pour les mariés</label>
+              <textarea id="motInvite" name="mot" placeholder="Écrivez un petit mot..." required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="priorite">Que voulez-vous que l’on prenne en premier avec votre super don ?</label>
+              <textarea id="priorite" name="priorite" placeholder="Exemple : la bibliothèque, l’hôtel Loire, la déco du salon..." required></textarea>
+            </div>
+
+            <div class="pay-box">
+              <div>
+                <strong>IBAN</strong>
+                <p class="iban">FR76 0000 0000 0000 0000 0000 000</p>
+                <p class="small">Tu pourras remplacer cet IBAN par le vrai en une seconde.</p>
+              </div>
+              <div>
+                <strong>WERO</strong>
+                <p class="small">Le bouton ci-dessous peut pointer vers ton vrai lien WERO.</p>
+                <a class="btn btn-primary" id="weroButton" href="#" aria-label="Lien WERO">Payer avec WERO</a>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
+              <button class="btn btn-primary" type="submit">Valider ma participation</button>
+              <button class="btn btn-secondary" type="button" id="backHomeBtn">Retour à l’accueil</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden" id="thanksPage">
+      <div class="container thanks-wrap">
+        <div class="glass-card thanks-card">
+          <div class="eyebrow">Merci infiniment</div>
+          <h2 class="title" style="font-size:clamp(2.2rem,8vw,5rem);margin-bottom:10px;">Merci infiniment ❤️</h2>
+          <p class="lead" style="margin-inline:auto;">Votre participation nous touche énormément et nous avons hâte de partager ce moment avec vous.</p>
+          <div style="margin-top:20px;">
+            <button class="btn btn-primary" id="returnHomeBtn" type="button">Retour à l’accueil</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Florian &amp; Galane — avec amour, en rose et jaune.
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.16 });
+
+    function bindRevealAnimations() {
+      document.querySelectorAll('.fade-up, .glass-card, .photo-card, .timeline-item, .gift-card, .hero-copy, .hero-actions, .reveal-word, .hero-date').forEach((el, idx) => {
+        el.style.transitionDelay = `${Math.min(idx * 40, 220)}ms`;
+        observer.observe(el);
+      });
+    }
+
+    bindRevealAnimations();
+
+    const heroTitleSpans = document.querySelectorAll('.reveal-lines span');
+    heroTitleSpans.forEach((span, idx) => {
+      span.style.opacity = '0';
+      span.style.transform = 'translateY(18px)';
+      span.style.display = 'block';
+      span.style.transition = `opacity 700ms cubic-bezier(.2,.7,.2,1) ${150 + idx * 120}ms, transform 700ms cubic-bezier(.2,.7,.2,1) ${150 + idx * 120}ms`;
+    });
+    requestAnimationFrame(() => {
+      heroTitleSpans.forEach((span) => {
+        span.style.opacity = '1';
+        span.style.transform = 'translateY(0)';
+      });
+    });
+
+    const gifts = [
+      { category: 'Maison', title: 'Casserole inox', text: 'Un essentiel pour notre cuisine et nos futurs repas à la maison.', icon: 'pan' },
+      { category: 'Maison', title: 'Oreiller', text: 'Pour des nuits encore plus douces dans notre nouveau cocon.', icon: 'pillow' },
+      { category: 'Maison', title: 'Assiette soupe bistrot', text: 'Une touche chaleureuse pour les repas qui réconfortent.', icon: 'plate' },
+      { category: 'Cleon', title: 'Siège auto Cleon', text: 'Un indispensable pour accompagner ses premières aventures.', icon: 'carseat' },
+      { category: 'Cleon', title: 'Matelas lit Cleon', text: 'Pour de belles nuits et de grands rêves.', icon: 'bed' },
+      { category: 'Cleon', title: 'Bureau Cleon', text: 'Un joli coin pour grandir, dessiner, lire et créer.', icon: 'desk' },
+      { category: 'Cleon', title: 'Chaise Cleon', text: 'Une assise pensée pour ses futurs moments créatifs.', icon: 'chair' },
+      { category: 'Cleon', title: 'Vêtement été Cleon', text: 'De quoi l’habiller pour les beaux jours et les grandes découvertes.', icon: 'shirt' },
+      { category: 'Maison', title: 'Bibliothèque', text: 'Pour accueillir nos livres, nos jeux et nos petits trésors.', icon: 'bookshelf' },
+      { category: 'Maison', title: 'Postère', text: 'Une note déco qui donnera du caractère à notre intérieur.', icon: 'poster' },
+      { category: 'Maison', title: 'Aliment résine', text: 'Un élément décoratif original pour personnaliser notre univers.', icon: 'decor' },
+      { category: 'Maison', title: 'Chaise pour notre barre', text: 'Pour finaliser un coin convivial à la maison.', icon: 'chair' },
+      { category: 'Maison', title: 'Étagère', text: 'Une pièce pratique et jolie pour mieux organiser notre intérieur.', icon: 'shelf' },
+      { category: 'Voyage Loire', title: 'Billet de train Loire', text: 'Une part de notre escapade à deux, pleine de douceur.', icon: 'train' },
+      { category: 'Voyage Loire', title: 'Hôtel Loire', text: 'Un moment suspendu dans un joli lieu pour prolonger la fête.', icon: 'hotel' },
+      { category: 'Projet', title: 'Commande en avant-première de GAV', text: 'Un projet qui nous tient à cœur et qu’on serait ravis de lancer avec vous.', icon: 'spark' },
+      { category: 'Maison', title: 'Placard chambre Florian Galane', text: 'Pour aménager notre espace de façon plus belle et plus pratique.', icon: 'closet' },
+      { category: 'Maison', title: 'Déco pour le salon', text: 'Les petits détails qui rendent un lieu vraiment chaleureux.', icon: 'sofa' }
+    ];
+
+    function iconSvg(type) {
+      const icons = {
+        pan: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="30" r="13"></circle><path d="M39 31h14"></path><path d="M50 31c5 0 7 2 7 5"></path><path d="M15 18h22"></path></svg>',
+        pillow: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="16" width="40" height="32" rx="10"></rect><rect x="20" y="24" width="24" height="16" rx="8"></rect></svg>',
+        plate: '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="18"></circle><circle cx="32" cy="32" r="8"></circle></svg>',
+        carseat: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 18v18c0 7 5 12 12 12h7"></path><path d="M22 24h16c7 0 12 5 12 12v10"></path><path d="M18 48h28"></path></svg>',
+        bed: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 42V24h40v18"></path><path d="M12 34h40"></path><path d="M18 24v10"></path><path d="M12 42v8"></path><path d="M52 42v8"></path></svg>',
+        desk: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 22h40v18H12z"></path><path d="M20 40v10"></path><path d="M44 40v10"></path><path d="M18 28h10"></path></svg>',
+        chair: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 18v14"></path><path d="M22 32h20"></path><path d="M42 24v22"></path><path d="M20 46h24"></path><path d="M24 46v6"></path><path d="M40 46v6"></path></svg>',
+        shirt: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 18l10 6 10-6 8 10-8 6v18H22V34l-8-6 8-10z"></path></svg>',
+        bookshelf: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 14h32v36H16z"></path><path d="M26 14v36"></path><path d="M38 14v36"></path><path d="M16 44h32"></path></svg>',
+        poster: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="14" width="28" height="36" rx="3"></rect><path d="M24 24h16"></path><path d="M24 32h10"></path><path d="M24 40h14"></path></svg>',
+        decor: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14l5 10 11 2-8 8 2 12-10-6-10 6 2-12-8-8 11-2 5-10z"></path></svg>',
+        shelf: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 18h32"></path><path d="M16 32h32"></path><path d="M16 46h32"></path><path d="M18 18v30"></path><path d="M46 18v30"></path></svg>',
+        train: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="14" width="28" height="28" rx="8"></rect><path d="M24 22h6"></path><path d="M34 22h6"></path><path d="M22 42l-4 8"></path><path d="M42 42l4 8"></path><circle cx="26" cy="48" r="2"></circle><circle cx="38" cy="48" r="2"></circle></svg>',
+        hotel: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 50V18h28v32"></path><path d="M26 24h4"></path><path d="M34 24h4"></path><path d="M26 32h4"></path><path d="M34 32h4"></path><path d="M30 50V40h8v10"></path></svg>',
+        spark: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12l4 12 12 4-12 4-4 12-4-12-12-4 12-4 4-12z"></path><path d="M48 12l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"></path></svg>',
+        closet: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="14" width="28" height="36" rx="3"></rect><path d="M32 14v36"></path><circle cx="28" cy="32" r="1.5"></circle><circle cx="36" cy="32" r="1.5"></circle></svg>',
+        sofa: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 30c0-5 3-8 8-8h12c5 0 8 3 8 8v10H18V30z"></path><path d="M14 34c0-3 2-5 5-5h1v16h-6V34z"></path><path d="M50 29h1c3 0 5 2 5 5v11h-6V29z"></path><path d="M18 46h28"></path></svg>'
+      };
+      return icons[type] || icons.spark;
+    }
+
+    function giftImagePath(title) {
+      return `assets/liste-mariage/${encodeURIComponent(title)}.jpeg`;
+    }
+
+    function renderGiftVisual(gift) {
+      return `
+        <img
+          class="gift-image"
+          src="${giftImagePath(gift.title)}"
+          alt="${gift.title}"
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        />
+        <div class="gift-icon-fallback">${iconSvg(gift.icon)}</div>
+      `;
+    }
+
+    const carousel = document.getElementById('giftCarousel');
+    carousel.innerHTML = gifts.map(gift => `
+      <article class="gift-card visible">
+        <div class="gift-visual">${renderGiftVisual(gift)}</div>
+        <div class="gift-meta">
+          <div class="tag">${gift.category}</div>
+          <h3>${gift.title}</h3>
+          <p>${gift.text}</p>
+        </div>
+        <a class="btn btn-secondary" href="#participer" data-gift-title="${gift.title.replace(/"/g, '&quot;')}">Je participe</a>
+      </article>
+    `).join('');
+    bindRevealAnimations();
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    prevBtn?.addEventListener('click', () => {
+      carousel.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      carousel.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    carousel.addEventListener('pointerdown', (e) => {
+      isDown = true;
+      carousel.setPointerCapture(e.pointerId);
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('pointermove', (e) => {
+      if (!isDown) return;
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.15;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    const stopDrag = () => { isDown = false; };
+    carousel.addEventListener('pointerup', stopDrag);
+    carousel.addEventListener('pointerleave', stopDrag);
+    carousel.addEventListener('pointercancel', stopDrag);
+
+    const mainSections = ['accueil','mot','journee','photos','liste','urne','participer'];
+    const formPage = document.getElementById('formPage');
+    const thanksPage = document.getElementById('thanksPage');
+    const openFormBtn = document.getElementById('openFormBtn');
+    const backHomeBtn = document.getElementById('backHomeBtn');
+    const returnHomeBtn = document.getElementById('returnHomeBtn');
+    const form = document.getElementById('participationForm');
+    const prioriteInput = document.getElementById('priorite');
+
+    function showHome() {
+      mainSections.forEach(id => document.getElementById(id)?.classList.remove('hidden'));
+      formPage.classList.add('hidden');
+      thanksPage.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showForm(selectedGiftTitle = '') {
+      mainSections.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+      thanksPage.classList.add('hidden');
+      formPage.classList.remove('hidden');
+
+      if (selectedGiftTitle && prioriteInput) {
+        prioriteInput.value = selectedGiftTitle;
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showThanks() {
+      formPage.classList.add('hidden');
+      thanksPage.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    openFormBtn?.addEventListener('click', showForm);
+    backHomeBtn?.addEventListener('click', showHome);
+    returnHomeBtn?.addEventListener('click', showHome);
+
+    function goToSectionFromAnyPage(sectionId) {
+      const targetId = sectionId === 'top' ? 'accueil' : sectionId;
+      const isOnSecondaryPage = !formPage.classList.contains('hidden') || !thanksPage.classList.contains('hidden');
+
+      if (isOnSecondaryPage) {
+        showHome();
+        requestAnimationFrame(() => {
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        return;
+      }
+
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.length < 2) return;
+
+      const targetId = href.slice(1);
+
+      link.addEventListener('click', (e) => {
+        if (targetId === 'participer') {
+          e.preventDefault();
+          showForm(link.dataset.giftTitle || '');
+          return;
+        }
+
+        if (targetId === 'top' || mainSections.includes(targetId)) {
+          e.preventDefault();
+          goToSectionFromAnyPage(targetId);
+        }
+      });
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showThanks();
+    });
+  </script>
+</body>
+</html>
