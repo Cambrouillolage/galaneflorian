@@ -518,13 +518,23 @@
     }
 
     .between-sections-note {
-      margin: 30px auto 0;
-      max-width: 74ch;
+      margin: 0 auto;
+      padding: 10px 0 18px;
+      width: min(100%, 62ch);
       text-align: center;
       color: #111111;
       font-size: clamp(1.2rem, 2.2vw, 1.55rem);
       line-height: 1.8;
       font-weight: 600;
+      text-wrap: balance;
+    }
+
+    #liste.section {
+      padding-top: 20px;
+    }
+
+    .list-title {
+      margin: 0;
     }
 
     .carousel-shell {
@@ -944,31 +954,34 @@ Galane & Florian ❤️
               <h3>le début de notre nouvelle vie de famille</h3>
               
             </div>
+            
           </article>
         </div>
-
+ <p class="between-sections-note fade-up">
+          Nous avons hâte de découvrir ce que la vie nous réserve, mais une chose est sûre : c'est qu'elle sera remplie d'amour.
+        </p>
       </div>
     </section>
 
     <section class="section" id="liste">
-      <div class="container glass-card fade-up">
-        <div class="gift-head">
-          <div>
-            <p class="between-sections-note fade-up">
-              Nous avons hâte de découvrir ce que la vie nous réserve, mais une chose est sûre : c'est qu'elle sera remplie d'amour.
-            </p>
-             <h2 class="title fade-up">La liste de mariage</h2>
-            <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;"></h2>
-            <p class="lead">Découvre nos envies qu'on aimerait et qui pourrait se réaliser avec vos participations. Une urne sera disponible jour J</p>
+      <div class="container">
+       
+  <h2 class="title fade-up list-title">La liste de mariage</h2>
+        <div class="glass-card fade-up" style="margin-top:22px;">
+          <div class="gift-head">
+            <div>
+              
+              <p class="lead">Découvre nos envies qu'on aimerait et qui pourrait se réaliser avec vos participations. Une urne sera disponible jour J</p>
+            </div>
+            <div class="carousel-nav">
+              <button class="icon-btn" type="button" id="prevBtn" aria-label="Voir les cadeaux précédents">←</button>
+              <button class="icon-btn" type="button" id="nextBtn" aria-label="Voir les cadeaux suivants">→</button>
+            </div>
           </div>
-          <div class="carousel-nav">
-            <button class="icon-btn" type="button" id="prevBtn" aria-label="Voir les cadeaux précédents">←</button>
-            <button class="icon-btn" type="button" id="nextBtn" aria-label="Voir les cadeaux suivants">→</button>
-          </div>
-        </div>
 
-        <div class="carousel-shell">
-          <div class="carousel" id="giftCarousel"></div>
+          <div class="carousel-shell">
+            <div class="carousel" id="giftCarousel"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -978,8 +991,8 @@ Galane & Florian ❤️
       <div class="container">
         <div class="glass-card cta-box fade-up">
           
-          <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Envie de participer&nbsp;?</h2>
-          <p class="lead" style="margin-inline:auto;">Tu peux nous laisser ton prénom et un petit mot.</p>
+          <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;">Vous souhaitez particper</h2>
+          <p class="lead" style="margin-inline:auto;">Vous pouvez nous laisser un petit mot et/ou participer en cliquant juste en dessous.</p>
           <div style="margin-top:20px;">
             <button class="btn btn-primary" id="openFormBtn" type="button">Je participe</button>
           </div>
@@ -1011,18 +1024,22 @@ Galane & Florian ❤️
             </div>
 
             <div class="field">
-              <label for="priorite">Cadeau</label>
+              <label for="priorite">A quel projet souhaitez-vous participer ?</label>
               <input id="priorite" name="priorite" type="text" placeholder="Exemple : Voyage de Noce" />
             </div>
 
+            <p class="lead" style="max-width:none;text-align:left;">
+              Pour participer, vous pouvez effectuer le virement directement sur votre application bancaire via le RIB ou WERO. Nous serons automatiquement notifié de chaque participation écrite et/ou financière.
+            </p>
+
             <div class="pay-box">
               <div>
-                <strong>IBAN</strong>
+                <strong>IBAN Mr Florian Pourchet</strong>
                 <p class="iban">FR76 3000 3027 8400 1100 6810 477</p>
                 
               </div>
               <div>
-                <strong>WERO</strong>
+                <strong>WERO Galane Lemoine</strong>
                 <p class="small">Sur votre banque au 06 99 21 23 65</p>
                 
               </div>
@@ -1040,9 +1057,9 @@ Galane & Florian ❤️
     <section class="hidden" id="thanksPage">
       <div class="container thanks-wrap">
         <div class="glass-card thanks-card">
-          <div class="eyebrow">Merci infiniment</div>
+         
           <h2 class="title" style="font-size:clamp(2.2rem,8vw,5rem);margin-bottom:10px;">Merci infiniment ❤️</h2>
-          <p class="lead" style="margin-inline:auto;">Votre participation nous touche énormément et nous avons hâte de partager ce moment avec vous.</p>
+          <p class="lead" style="margin-inline:auto;">Votre participation nous touche énormément et nous avons hâte de vous retrouver le 11 Avril.</p>
           <div style="margin-top:20px;">
             <button class="btn btn-primary" id="returnHomeBtn" type="button">Retour à l’accueil</button>
           </div>
@@ -1236,6 +1253,11 @@ Galane & Florian ❤️
     }
 
     function showForm(selectedGiftTitle = '') {
+      // Ignore les objets Event passés par addEventListener.
+      if (selectedGiftTitle && typeof selectedGiftTitle === 'object') {
+        selectedGiftTitle = '';
+      }
+
       mainSections.forEach(id => document.getElementById(id)?.classList.add('hidden'));
       thanksPage.classList.add('hidden');
       formPage.classList.remove('hidden');
@@ -1254,7 +1276,7 @@ Galane & Florian ❤️
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    openFormBtn?.addEventListener('click', showForm);
+    openFormBtn?.addEventListener('click', () => showForm(''));
     backHomeBtn?.addEventListener('click', showHome);
     returnHomeBtn?.addEventListener('click', showHome);
 
