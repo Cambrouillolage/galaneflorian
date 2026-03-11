@@ -517,6 +517,16 @@
       margin-bottom: 22px;
     }
 
+    .between-sections-note {
+      margin: 30px auto 0;
+      max-width: 74ch;
+      text-align: center;
+      color: #111111;
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      line-height: 1.8;
+      font-weight: 600;
+    }
+
     .carousel-shell {
       position: relative;
     }
@@ -776,6 +786,8 @@
       .hero-shell { padding: 34px 30px 28px; }
       .section { padding: 92px 0; }
       #mot.section { padding-top: 40px; }
+      .message-single { max-width: none; }
+      .message-text { max-width: none; }
       .section-grid.two { grid-template-columns: 1.15fr .85fr; align-items: center; }
       .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .photos .photo-card { min-height: 340px; }
@@ -839,9 +851,10 @@
         <div class="glass-card message-card fade-up">
           
           <p class="message-text">
-            Après plusieurs années à partager notre vie, nos aventures et pas mal de fous rires, on est très heureux de pouvoir célébrer ce moment avec vous.
-Votre présence à nos côtés pour cette journée compte énormément pour nous. On a hâte de passer ce moment entourés des gens qu’on aime, de profiter, rire, manger, danser… et créer plein de beaux souvenirs ensemble.
-Merci d’être là ❤️
+            Ça y est, le grand jour approche à grands pas. Dans moins d'un mois, nous nous retrouverons tous ensemble à la mairie de Clamart pour célébrer notre amour. Nous sommes heureux de vous compter parmi nos invités et nous avons hâte de passer avec vous cette journée qui s'annonce comme l'une des plus belles de notre vie.
+Pour patienter jusqu'au jour J, nous vous avons préparé un petit site sur lequel vous trouverez les informations relatives au mariage.
+Vous pouvez bien évidemment nous envoyer un message s'il vous reste des questions. On vous fait plein de gros bisous.
+Galane & Florian ❤️
           </p>
         </div>
       </div>
@@ -849,34 +862,34 @@ Merci d’être là ❤️
 
     <section class="section" id="journee">
       <div class="container">
-        <div class="eyebrow fade-up">Notre journée</div>
+        <h2 class="title fade-up">Le programme de la journée</h2>
         <div class="timeline" style="margin-top:24px;">
           <article class="timeline-item">
             <div class="timeline-icon">💍</div>
             <div>
-              <h3>Cérémonie</h3>
-              <p>RDV à 13h30 devant le parvis de la Mairie dans vos plus belles tenues. La cérémonie se tiendra dans la salle des mariages</p>
+              <h3>La cérémonie</h3>
+              <p>Rendez-vous à 13 h 30 sur le parvis de la mairie de Clamart (92140), dans vos plus belles tenues colorées.</p>
             </div>
           </article>
           <article class="timeline-item">
             <div class="timeline-icon">🥂</div>
             <div>
-              <h3>Entre-deux</h3>
-              <p>Un temps pour trinquer jusqu'à 16h30, dans le bar en face de la mairie le temps de faire les photos.</p>
+              <h3>L'entre-deux</h3>
+              <p>Suite à la cérémonie, nous nous retrouverons au bar de l’hôtel de ville. Ce sera le moment de trinquer et de faire les photos de groupe.</p>
             </div>
           </article>
           <article class="timeline-item">
             <div class="timeline-icon">🍽️</div>
             <div>
-              <h3>La Croisière</h3>
-              <p>RDV à 18h30 au port de Grenelle à Paris 15eme, pour le Diner des cocktails et pleins de surprises. Retour à quai à 23h00 </p>
+              <h3>Le dîner</h3>
+              <p>Rendez-vous à 18 h au port de Grenelle, Paris 15ᵉ. Le dîner aura lieu pendant la croisière, avec un retour à quai estimé à 22 h 45. </p>
             </div>
           </article>
           <article class="timeline-item">
             <div class="timeline-icon">✨</div>
             <div>
-              <h3>Soirée</h3>
-              <p>Ouverture de la piste de danse de 23h30 à 2h00.</p>
+              <h3>La soirée</h3>
+              <p>Une fois à quai, le DJ ouvrira le bal aux alentours de 23 h et vous pourrez enflammer le dance floor jusqu’à 2 h.</p>
             </div>
           </article>
         </div>
@@ -886,7 +899,7 @@ Merci d’être là ❤️
     <section class="section" id="photos">
       <div class="container">
         
-        <h2 class="title fade-up">Notre vie en photos</h2>
+        <h2 class="title fade-up">Du premier jour à aujourd'hui</h2>
        
 
         <div class="photos" style="margin-top:26px;">
@@ -900,7 +913,7 @@ Merci d’être là ❤️
           <article class="photo-card">
             <img src="assets/photos/2photo.jpeg" alt="Photo 2" />
             <div class="photo-overlay">
-              <h3>1er Jour de la coloc</h3>
+              <h3>Premier jour à la coloc</h3>
              
             </div>
           </article>
@@ -914,25 +927,26 @@ Merci d’être là ❤️
           <article class="photo-card">
             <img src="assets/photos/4photo.jpeg" alt="Photo 4" />
             <div class="photo-overlay">
-              <h3>Dernier jour de la coloc</h3>
+              <h3>Dernier jour à la coloc</h3>
              
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/5photo.jpeg" alt="Photo 5" />
             <div class="photo-overlay">
-              <h3>Le début de notre belle histoire</h3>
+              <h3>Nos premières vacances en amoureux</h3>
              
             </div>
           </article>
           <article class="photo-card">
             <img src="assets/photos/6photo.jpeg" alt="Photo 6" />
             <div class="photo-overlay">
-              <h3>et le début de notre nouvelle aventure</h3>
+              <h3>le début de notre nouvelle vie de famille</h3>
               
             </div>
           </article>
         </div>
+
       </div>
     </section>
 
@@ -940,7 +954,10 @@ Merci d’être là ❤️
       <div class="container glass-card fade-up">
         <div class="gift-head">
           <div>
-            <div class="eyebrow">Liste de mariage</div>
+            <p class="between-sections-note fade-up">
+              Nous avons hâte de découvrir ce que la vie nous réserve, mais une chose est sûre : c'est qu'elle sera remplie d'amour.
+            </p>
+             <h2 class="title fade-up">La liste de mariage</h2>
             <h2 class="title" style="font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;"></h2>
             <p class="lead">Découvre nos envies qu'on aimerait et qui pourrait se réaliser avec vos participations. Une urne sera disponible jour J</p>
           </div>
