@@ -19,4 +19,10 @@ Le projet est configure pour un deploiement classique GitHub Pages (sans GitHub 
 
 - Guide detaille: [DEPLOYMENT.md](DEPLOYMENT.md)
 
+Commande de verification avant MEP:
+
+```bash
+./scripts/preflight.sh
+```
+
 Configurer dans GitHub: Settings > Pages > Deploy from a branch > `main` + `/(root)`.

@@ -1,6 +1,6 @@
-# Mise en prod
+# Mise en prod (MEP)
 
-Ce projet est un site statique (HTML/CSS/JS) et est pret pour un deploiement classique GitHub Pages (sans GitHub Actions).
+Ce projet est un site statique (HTML/CSS/JS) deploye sur GitHub Pages, sans GitHub Actions.
 
 ## 1) Prerequis (une seule fois)
 
@@ -11,24 +11,53 @@ Ce projet est un site statique (HTML/CSS/JS) et est pret pour un deploiement cla
 5. Selectionner Folder: /(root)
 6. Enregistrer
 
-## 2) Deploiement production
+## 2) Preflight obligatoire avant MEP
+
+Lancer les controles automatiques:
+
+```bash
+./scripts/preflight.sh
+```
+
+Le script verifie notamment:
+
+1. Presence des fichiers critiques
+2. Chemins HTML (pas de chemins absolus cassants)
+3. References locales vers les assets
+4. Presence des images photos et liste de mariage
+5. Presence d'un webhook configure
+
+Si le script retourne une erreur, corriger avant de deployer.
+
+## 3) Deploiement production
 
 Le site est publie depuis la branche main (racine du projet).
 
-Commandes typiques:
+Commandes recommandées:
 
 ```bash
 git checkout main
-git pull
+git pull origin main
 git merge <ta-branche>
+./scripts/preflight.sh
 git push origin main
 ```
 
 Ensuite, attendre 1 a 3 minutes le temps que GitHub Pages publie la mise a jour.
 
-## 3) URL de prod
+## 4) Verification post-deploiement
 
-L'URL finale est generalement:
+Verifier rapidement:
+
+1. Ouverture de la page d'accueil
+2. Navigation entre sections
+3. Chargement des photos
+4. Chargement des visuels de la liste de mariage
+5. Ouverture du formulaire de participation
+
+## 5) URL de prod
+
+URL standard:
 
 - https://<owner>.github.io/<repo>/
 
@@ -36,7 +65,7 @@ Dans ce projet:
 
 - https://Cambrouillolage.github.io/galaneflorian/
 
-## 4) Verification rapide avant push
+## 6) Verification locale rapide
 
 ```bash
 python3 -m http.server 8000
@@ -47,10 +76,11 @@ Puis ouvrir:
 - http://localhost:8000/index.html
 - http://localhost:8000/mariage_premium_site.html
 
-## 5) Rollback simple
+## 7) Rollback simple
 
 En cas de probleme:
 
-1. Revenir au commit precedent sur main
-2. Push sur main
-3. GitHub Pages republie automatiquement cette version
+1. Identifier le dernier commit stable
+2. Revenir dessus (revert ou reset selon votre process)
+3. Push sur main
+4. GitHub Pages republie automatiquement cette version
